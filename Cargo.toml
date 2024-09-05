@@ -1,0 +1,32 @@
+[package]
+edition = "2021"
+name = "embassy-wasm-example"
+version = "0.1.0"
+license = "MIT OR Apache-2.0"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+embassy-sync = { version = "*", features = ["log"] }
+embassy-executor = { version = "*", features = ["arch-wasm", "executor-thread", "log", "integrated-timers"] }
+embassy-time = { version = "*", features = ["log", "wasm", ] }
+
+wasm-logger = "0.2.0"
+wasm-bindgen = "0.2"
+web-sys = { version = "0.3", features = ["Document", "Element", "HtmlElement", "Node", "Window" ] }
+log = "0.4.11"
+wasm_thread = "0.3.0"
+console_error_panic_hook = "0.1.7"
+
+[profile.release]
+debug = 2
+
+# Optimize all dependencies even in debug builds. This fixes issues with wasm_thread. 
+[profile.dev.package."*"]
+opt-level = 2
+
+[patch.crates-io]
+embassy-sync = { git = "https://github.com/embassy-rs/embassy.git", branch = "main" }
+embassy-executor = { git = "https://github.com/embassy-rs/embassy.git", branch = "main" }
+embassy-time = { git = "https://github.com/embassy-rs/embassy.git", branch = "main" }
