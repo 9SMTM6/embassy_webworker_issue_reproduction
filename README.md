@@ -6,3 +6,7 @@ It starts from https://github.com/embassy-rs/embassy/tree/main/examples/wasm, ho
 Most changes are explained here: https://github.com/trunk-rs/trunk/tree/main/examples/wasm_threads.
 Many changes are probably not required to trigger the issues, they are required to have web-workers with shared memory (AKA wasm threads), but `wasm_thread` is the webworker API I'm familiar with, and requires these.
 Additional changes are made to make the issue visible (e.g. setting a panic hook to show the panic in the background thread).
+
+## Running this example
+
+To run this example simply install trunk and run `trunk serve`. Everything should be installed etc. automatically. THen open localhost:8080 in your webbrowser.
