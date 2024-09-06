@@ -10,7 +10,7 @@ crate-type = ["cdylib"]
 [dependencies]
 embassy-sync = { version = "*", features = ["log"] }
 embassy-executor = { version = "*", features = ["arch-wasm", "executor-thread", "log", "integrated-timers"] }
-embassy-time = { version = "*", features = ["log", "wasm", ] }
+embassy-time = { version = "*", features = ["log", "wasm", "panic_on_webworker"] }
 
 wasm-logger = "0.2.0"
 wasm-bindgen = "0.2"
@@ -27,6 +27,10 @@ debug = 2
 opt-level = 2
 
 [patch.crates-io]
-embassy-sync = { git = "https://github.com/embassy-rs/embassy.git", branch = "main" }
-embassy-executor = { git = "https://github.com/embassy-rs/embassy.git", branch = "main" }
-embassy-time = { git = "https://github.com/embassy-rs/embassy.git", branch = "main" }
+# embassy-time = { path = "../embassy/embassy-time" }
+# embassy-executor = { path = "../embassy/embassy-executor" }
+# embassy-sync = { path = "../embassy/embassy-sync" }
+
+embassy-sync = { git = "https://github.com/9SMTM6/embassy.git", branch = "dont_use_wasm_timer" }
+embassy-executor = { git = "https://github.com/9SMTM6/embassy.git", branch = "dont_use_wasm_timer" }
+embassy-time = { git = "https://github.com/9SMTM6/embassy.git", branch = "dont_use_wasm_timer" }
